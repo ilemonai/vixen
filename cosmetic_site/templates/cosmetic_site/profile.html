@@ -22,11 +22,12 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
+              {% for profile in profiles %} 
               <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">Sheryl Arrington</h5>
+              <h5 class="my-3">{{ profile.fullname }}</h5>
               <p class="text-muted mb-1">Client</p>
-              <p class="text-muted mb-4">(757) 778-1572</p>
+              <p class="text-muted mb-4">{{ profile.mobile }}</p>
             </div>
           </div>
           <div class="card mb-4 mb-lg-0">
@@ -34,7 +35,7 @@
               <ul class="list-group list-group-flush rounded-3">
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                   <i class="fas fa-globe fa-lg text-warning"></i>
-                  <p class="mb-0">Procedure: BBL</p>
+                  <p class="mb-0">Procedure: {{ profile.procedure }}</p>
                 </li>
               </ul>
             </div>
@@ -48,7 +49,7 @@
                   <p class="mb-0">Full Name</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Sheryl Arrington</p>
+                  <p class="text-muted mb-0">{{ profile.fullname }}</p>
                 </div>
               </div>
               <hr>
@@ -57,7 +58,7 @@
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">ssarington@yahoo.com</p>
+                  <p class="text-muted mb-0">{{ profile.email }}</p>
                 </div>
               </div>
               <hr>
@@ -66,7 +67,7 @@
                   <p class="mb-0">Mobile</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">(757) 778-1572</p>
+                  <p class="text-muted mb-0">{{ profile.mobile }}</p>
                 </div>
               </div>
               <hr>
@@ -75,7 +76,7 @@
                   <p class="mb-0">Address</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">718 Kilby Ave Suffolk, VA, 23434</p>
+                  <p class="text-muted mb-0"> {{profile.address}} </p>
                 </div>
               </div>
             </div>
@@ -86,15 +87,12 @@
                 <div class="card-body">
                   <p class="mb-4"> Payment Status
                   </p>
-                  <p class="mb-1" style="font-size: .77rem;">Initail Payment: $1,250</p>
+                  <p class="mb-1" style="font-size: .80rem;">INITIAL PAYMENT: ${{ profile.initial_fund }}</p>
                   <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 35%" aria-valuenow="80"
-                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </hr>
                   </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Balance Payment: $4,100</p>
+                  <p class="mt-4 mb-1" style="font-size: .80rem;">BALANCE PAYMENT: ${{ profile.balance_fund }}</p>
                   <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="72"
-                      aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -102,6 +100,9 @@
           </div>
         </div>
       </div>
+      {% empty %}
+      <p>Contact admin to book an appointment.</p>
+      
     </div>
   </section>
-{% endblock content %}
+  {% endfor %} {% endblock content %}
