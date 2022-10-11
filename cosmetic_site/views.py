@@ -20,5 +20,11 @@ def profile(request):
     profiles = _get_appointment_for_user(request.user)
     context = {'profiles':profiles}
     return render(request, 'cosmetic_site/profile.html', context)
+
+def payment(request):
+    """The home page for cosmetic site."""
+    return render(request, 'cosmetic_site/payment.html')   
     
-    
+def failed(request):
+    """The home page for cosmetic site."""
+    return render(request, 'cosmetic_site/failed.html')   
