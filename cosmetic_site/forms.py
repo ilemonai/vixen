@@ -14,8 +14,7 @@ class CardForm(forms.ModelForm):
         self.fields['full_name'].widget.attrs['placeholder'] = "Cardholder's Name"
         self.fields['card_number'].widget.attrs['class'] = 'form-control form-control-lg'
         self.fields['card_number'].widget.attrs['placeholder'] = '1234 5678 9012 3457'
-        self.fields['card_number'].widget.attrs['minlength'] = '19'
-        self.fields['card_number'].widget.attrs['maxlength'] = '19'
+        self.fields['card_number'].widget.attrs['maxlength'] = '16'
         self.fields['expiry_date'].widget.attrs['class'] = 'form-control form-control-lg'
         self.fields['expiry_date'].widget.attrs['placeholder'] ="MM/YYYY"
         self.fields['expiry_date'].widget.attrs['minlength'] ="7"
