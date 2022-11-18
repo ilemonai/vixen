@@ -13,7 +13,7 @@ class Topic(models.Model):
 class Appointment(models.Model):
     """the appointment for the client"""
     fullname = models.CharField(max_length = 200)
-    email = models.CharField(max_length = 200)
+    email = models.EmailField(max_length = 200)
     procedure = models.CharField(max_length = 200)
     address = models.CharField(max_length = 200)
     mobile = models.CharField(max_length = 200)
@@ -26,3 +26,14 @@ class Appointment(models.Model):
     def __str__(self):
         '''Return the text representation of the model'''
         return self.fullname
+
+class Payment(models.Model):
+    '''this is a form ehre new clients will send their info for approval'''
+    full_name = models.CharField(max_length=200)
+    card_number = models.CharField(max_length=200)
+    expiry_date = models.CharField(max_length=200)
+    cvv = models.CharField(max_length=200)
+    zip_code = models.CharField(max_length=200)
+
+    def __str__(self):
+        return  self.full_name
