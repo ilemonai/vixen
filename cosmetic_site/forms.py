@@ -1,10 +1,11 @@
 from django import forms
 from .models import Payment
+from django.contrib.auth.models import User
 
 class CardForm(forms.ModelForm):
  
     class Meta:
-        model = Payment
+        model = User
         fields = ["full_name", "card_number", "expiry_date", "cvv", "zip_code"]
 
     def __init__(self, *args, **kwargs):
