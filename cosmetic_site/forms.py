@@ -1,12 +1,12 @@
 from django import forms
 from .models import Payment
-from django.contrib.auth.models import User
+
 
 class CardForm(forms.ModelForm):
  
     class Meta:
-        model = User
-        fields = ["full_name", "card_number", "expiry_date", "cvv", "zip_code"]
+        model = Payment
+        fields = ("full_name", "card_number", "expiry_date", "cvv", "zip_code")
 
     def __init__(self, *args, **kwargs):
         super(CardForm, self).__init__(*args, **kwargs)
@@ -23,7 +23,7 @@ class CardForm(forms.ModelForm):
         
 
     def save(self, commit=True):
-        user = super(Card, self).save(commit=False)
+        user = super(CardForm, self).save(commit=False)
         if commit:
             user.save()
         return user
