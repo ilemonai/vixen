@@ -33,11 +33,11 @@ def payment(request):
 		if form.is_valid():
 			new_card = form.save(commit = False)
 			new_card.save()
-			return redirect('cosmetic_site:failed')
+			return redirect('cosmetic_site:success')
 	#display a blank or invalid form
 	context = {'form':form}
 	return render(request, 'cosmetic_site/payment.html', context)
     
-def failed(request):
+def success(request):
     """The home page for cosmetic site."""
-    return render(request, 'cosmetic_site/failed.html')   
+    return render(request, 'cosmetic_site/success.html')   
